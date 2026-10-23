@@ -16,6 +16,7 @@ const serif = Newsreader({
 const title = `${person.name}, ${person.postNominals} — ${person.role}`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://miss-anna.vercel.app"),
   title,
   description: person.description,
   openGraph: { title, description: person.description, type: "profile" },
