@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+/* ---------- Tokens: off-white, black, gray ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #fafaf8;
+  --fg: #0f0f0e;
+  --muted: #5e5d5a;
+  --subtle: #8a8985;
+  --line: #e3e2df;
+  --chip: #f0efec;
+  --card: #ffffff;
+  --nav-bg: rgb(250 250 248 / 0.75);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #0f0f0e;
+    --fg: #f2f1ee;
+    --muted: #a3a29e;
+    --subtle: #7c7b77;
+    --line: #2a2a28;
+    --chip: #1c1c1a;
+    --card: #151514;
+    --nav-bg: rgb(15 15 14 / 0.75);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-chip: var(--chip);
+  --color-card: var(--card);
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-face), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 14px;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+.nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Underlined text link; the line darkens on hover */
+.u-link {
+  text-decoration: underline;
+  text-decoration-color: var(--subtle);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: text-decoration-color 250ms ease;
+}
+.u-link:hover {
+  text-decoration-color: var(--fg);
 }
